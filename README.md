@@ -1,8 +1,8 @@
-# Remote Wipe
+# KillSwitch
 
 **Open-source remote wipe and decommissioning platform for servers and workstations**
 
-Remote Wipe is an AGPL-licensed, enterprise-grade solution for secure data destruction, incident response, and device decommissioning. It provides cryptographically secure remote wipe capabilities with comprehensive audit logging and policy enforcement.
+KillSwitch is an AGPL-licensed, enterprise-grade solution for secure data destruction, incident response, and device decommissioning. It provides cryptographically secure remote wipe capabilities with comprehensive audit logging and policy enforcement.
 
 ## ⚠️ Warning
 
