@@ -1,0 +1,50 @@
+[package]
+name = "server"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+authors.workspace = true
+description = "Remote Wipe control plane server"
+
+[[bin]]
+name = "remote-wipe-server"
+path = "src/main.rs"
+
+[dependencies]
+common = { path = "../common" }
+
+# Async runtime
+tokio = { workspace = true }
+
+# Web framework
+axum = { workspace = true }
+axum-extra = { workspace = true }
+
+# Serialization
+serde = { workspace = true }
+serde_json = { workspace = true }
+
+# Database
+sqlx = { workspace = true }
+
+# Crypto and security
+totp-rs = { workspace = true }
+uuid = { workspace = true }
+
+# Error handling
+anyhow = { workspace = true }
+thiserror = { workspace = true }
+
+# Logging
+tracing = { workspace = true }
+tracing-subscriber = { workspace = true }
+
+# Time
+chrono = { workspace = true }
+
+# CLI
+clap = { workspace = true }
+
+# HTTP client (for callbacks)
+reqwest = { workspace = true }

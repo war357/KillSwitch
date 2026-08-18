@@ -1,0 +1,36 @@
+[package]
+name = "wipe-partition"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+authors.workspace = true
+description = "2FA-gated bootable wipe partition tool"
+
+[[bin]]
+name = "remote-wipe-partition"
+path = "src/main.rs"
+
+[dependencies]
+common = { path = "../common" }
+
+# Async runtime
+tokio = { workspace = true }
+
+# Serialization
+serde = { workspace = true }
+serde_json = { workspace = true }
+
+# Crypto and security
+totp-rs = { workspace = true }
+uuid = { workspace = true }
+
+# Error handling
+anyhow = { workspace = true }
+thiserror = { workspace = true }
+
+# CLI
+clap = { workspace = true }
+
+# Time
+chrono = { workspace = true }

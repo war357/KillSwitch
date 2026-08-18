@@ -1,0 +1,45 @@
+[package]
+name = "agent"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+authors.workspace = true
+description = "Remote Wipe endpoint agent"
+
+[[bin]]
+name = "remote-wipe-agent"
+path = "src/main.rs"
+
+[dependencies]
+common = { path = "../common" }
+
+# Async runtime
+tokio = { workspace = true }
+tokio-rustls = { workspace = true }
+rustls = { workspace = true }
+
+# Serialization
+serde = { workspace = true }
+serde_json = { workspace = true }
+toml = { workspace = true }
+
+# Error handling
+anyhow = { workspace = true }
+thiserror = { workspace = true }
+
+# Logging
+tracing = { workspace = true }
+tracing-subscriber = { workspace = true }
+
+# HTTP client
+reqwest = { workspace = true }
+
+# CLI
+clap = { workspace = true }
+
+# UUID
+uuid = { workspace = true }
+
+# System
+nix = { version = "0.27", features = ["process", "reboot"] }

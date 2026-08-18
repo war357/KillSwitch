@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: remote_wipe
+      POSTGRES_PASSWORD: changeme
+      POSTGRES_DB: remote_wipe
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U remote_wipe"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - remote-wipe-net
+
+  remote-wipe-server:
+    image: remote-wipe-server:latest
+    build:
+      context: .
+      dockerfile: deploy/docker/Dockerfile.server
+    environment:
+      DATABASE_URL: postgres://remote_wipe:changeme@postgres/remote_wipe
+      RUST_LOG: info
+      BIND: 0.0.0.0:8080
+    ports:
+      - "8080:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - audit_logs:/var/log/remote-wipe
+    networks:
+      - remote-wipe-net
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+  audit_logs:
+
+networks:
+  remote-wipe-net:
+    driver: bridge
